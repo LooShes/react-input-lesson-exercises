@@ -10,11 +10,25 @@ constructor() {
     }
 }
 
+updateFruit = async (event) => {
+    await this.setState({fruit: event.target.value})
+    console.log(`${this.state.name} selected ${this.state.fruit}`)
+}
+
+updateName = (event) => {
+    this.setState({name: event.target.value})
+}
+
 render() {
     return (
         <div>
-            <input id="name-input" />
-            <select id="select-input"></select>
+            <input id="name-input" value={this.state.name} onChange={this.updateName} />
+            <select id="select-input" value={this.state.fruit} onChange={this.updateFruit}>
+                <option id="apple">apple</option>
+                <option id="banana">banana</option>
+                <option id="peach">peach</option>
+                <option id="strawberry">strawberry</option>
+            </select>
         </div>
     );
 }
